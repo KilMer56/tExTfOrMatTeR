@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>TeXt FoRmAtEr</title>
+    <meta name="description" content="Text formater for memes">
+    <meta name="author" content="KilMer56">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="formater">
+            <h1>TeXt FoRmAtEr</h1>
+            <input id="formatInput" v-model="content" type="text" placeholder="Insert the text to format" />
+            <div class="actions">
+                <button class="formatBtn" @click="normalFormater()">Format</button>
+                <button class="formatBtn" @click="randomFormater()">Random Format</button>
+                <button class="formatBtn" @click="uppercaseFormater()">UpperCase Format</button>
+                <button :class="{formatBtn: true, copiedStyle: copied}"
+                    @click="copyTextToClipboard()">{{ copied ? 'Copied !' : 'Copy' }}</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                content: '',
+                copied: false
+            },
+            methods: {
+                normalFormater: function () {
+                    let newResult = '';
+
+                    for (let i = 0; i < this.content.length; i++) {
+                        if (i % 2 == 1) newResult += this.content.charAt(i).toUpperCase();
+                        else newResult += this.content.charAt(i).toLowerCase();
+                    }
+
+                    this.content = newResult;
+                },
+                randomFormater: function () {
+                    let newResult = '';
+
+                    for (let i = 0; i < this.content.length; i++) {
+                        if (Math.random() >= 0.5) newResult += this.content.charAt(i).toUpperCase();
+                        else newResult += this.content.charAt(i).toLowerCase();
+                    }
+
+                    this.content = newResult;
+                },
+                uppercaseFormater: function () {
+                    this.content = this.content.toUpperCase();
+                },
+                copyTextToClipboard: function () {
+                    var copyText = document.getElementById("formatInput");
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999);
+
+                    document.execCommand("copy");
+
+                    this.copied = true;
+                }
+            },
+            watch: {
+                content(value) {
+                    this.copied = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

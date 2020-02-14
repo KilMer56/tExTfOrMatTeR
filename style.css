@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "MinecraftFont";
+    src: url("./assets/Minecraft.ttf");
+}
+
+html,body {
+    height: 95%;
+}
+
+* {
+    font-family: 'MinecraftFont';
+}
+
+input, span, p, button {
+    font-size: 175%;
+}
+   
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#formater {
+    max-width: 1000px;
+    width: 100%;
+    border: 4px solid black;
+    padding: 50px;
+    text-align: center;
+}
+
+h1 {
+    letter-spacing: 5px;
+    font-size: 300% !important;
+}
+
+#formatInput {
+    width: 100%;
+    letter-spacing: 5px;
+    padding: 10px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    border: 2px solid black;
+    margin-bottom: 30px;
+}
+
+.formatBtn {
+    background-color: white;
+    border: 3px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.copiedStyle {
+    background-color: black;
+    color: white;
+}
+
+@media screen and (max-width: 500px) {
+    input, span, p, button {
+        font-size: 250%;
+    }
+
+    h1 {
+        font-size: 500% !important;
+    }
+
+    .formatBtn {
+        color: red;
+    }
+}
