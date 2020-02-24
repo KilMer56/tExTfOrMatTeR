@@ -23,7 +23,7 @@ input, span, p, button {
     justify-content: center;
 }
 
-#formater {
+#formatter {
     max-width: 1000px;
     width: 100%;
     border: 4px solid black;

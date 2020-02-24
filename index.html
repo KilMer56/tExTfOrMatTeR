@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
 
-    <title>TeXt FoRmAtEr</title>
-    <meta name="description" content="Text formater for memes">
+    <title>TeXt FoRmAtTeR</title>
+    <meta name="description" content="Text formatter for memes">
     <meta name="author" content="KilMer56">
 
     <link rel="stylesheet" href="style.css">
@@ -14,13 +14,13 @@
 
 <body>
     <div id="app">
-        <div id="formater">
-            <h1>TeXt FoRmAtEr</h1>
+        <div id="formatter">
+            <h1>TeXt FoRmAtTeR</h1>
             <input id="formatInput" v-model="content" type="text" placeholder="Insert the text to format" />
             <div class="actions">
-                <button class="formatBtn" @click="normalFormater()">Format</button>
-                <button class="formatBtn" @click="randomFormater()">Random Format</button>
-                <button class="formatBtn" @click="uppercaseFormater()">UpperCase Format</button>
+                <button class="formatBtn" @click="normalFormatter()">Format</button>
+                <button class="formatBtn" @click="randomFormatter()">Random Format</button>
+                <button class="formatBtn" @click="uppercaseFormatter()">UpperCase Format</button>
                 <button :class="{formatBtn: true, copiedStyle: copied}"
                     @click="copyTextToClipboard()">{{ copied ? 'Copied !' : 'Copy' }}</button>
             </div>
@@ -36,27 +36,25 @@
                 copied: false
             },
             methods: {
-                normalFormater: function () {
+                normalFormatter: function () {
                     let newResult = '';
 
                     for (let i = 0; i < this.content.length; i++) {
-                        if (i % 2 == 1) newResult += this.content.charAt(i).toUpperCase();
-                        else newResult += this.content.charAt(i).toLowerCase();
+                        newResult += this.content.charAt(i)[`to${(i % 2 == 1 ? 'Upper' : 'Lower')}Case`]();
                     }
 
                     this.content = newResult;
                 },
-                randomFormater: function () {
+                randomFormatter: function () {
                     let newResult = '';
 
                     for (let i = 0; i < this.content.length; i++) {
-                        if (Math.random() >= 0.5) newResult += this.content.charAt(i).toUpperCase();
-                        else newResult += this.content.charAt(i).toLowerCase();
+                        newResult += this.content.charAt(i)[`to${(Math.random() >= 0.5 ? 'Upper' : 'Lower')}Case`]();
                     }
 
                     this.content = newResult;
                 },
-                uppercaseFormater: function () {
+                uppercaseFormatter: function () {
                     this.content = this.content.toUpperCase();
                 },
                 copyTextToClipboard: function () {
