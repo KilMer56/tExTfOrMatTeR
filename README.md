@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to tExTfOrMaTeR 👋</h1>
+<h1 align="center">Welcome to tExTfOrMatTeR 👋</h1>
 
 > Very very simple website to transform text in mEMe fOrMAt
 
